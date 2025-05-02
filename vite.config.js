@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import bunSingle from './vite-plugin-bun-single'
+import bunSingle from 'vite-plugin-bun-single'
 
 // https://vite.dev/config/
 export default defineConfig({

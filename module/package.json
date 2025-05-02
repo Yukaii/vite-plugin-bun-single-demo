@@ -14,8 +14,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "build": "tsup",
+    "prepublishOnly": "bun run build"
   },
   "keywords": [
     "vite",
@@ -39,6 +39,7 @@
     "@types/bun": "^1.2.11",
     "@types/mime": "^4.0.0",
     "@types/node": "^22.15.3",
+    "tsup": "^8.4.0",
     "typescript": "^5.0.0"
   }
 }
