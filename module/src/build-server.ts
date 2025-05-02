@@ -20,7 +20,7 @@ export interface BuildServerConfig {
 
   /**
    * Name of the output executable file
-   * @default 'site'
+   * @default 'www'
    */
   executableName?: string;
 }
@@ -33,7 +33,7 @@ export interface BuildServerConfig {
 export async function buildServer(config: BuildServerConfig = {}) {
   const outDir = config.outDir || 'out';
   const serverFileName = config.serverFileName || 'server.ts';
-  const executableName = config.executableName || 'site';
+  const executableName = config.executableName || 'www';
 
   const serverInputPath = resolve(join(outDir, serverFileName));
   const serverOutputPath = resolve(join(outDir, executableName));
@@ -65,7 +65,7 @@ if (import.meta.main) {
   const args = process.argv.slice(2);
   let outDir = 'out';
   let serverFileName = 'server.ts';
-  let executableName = 'site';
+  let executableName = 'www';
 
   // Very simple argument parsing
   for (let i = 0; i < args.length; i++) {

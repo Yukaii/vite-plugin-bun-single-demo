@@ -1,12 +1,34 @@
-# React + Vite
+# vite-plugin-bun-single (POC)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> This is a **proof of concept** Vite plugin that enables bundling your web application into a single Bun executable, with minimal changes to your project.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Single Executable Output:** Uses Bun's `bun build --compile` to package your Vite-built app and a Bun server into one binary.
+- **Minimal Integration:** Just add the plugin to your `vite.config.js` and a build script to your `package.json`.
+- **No App Code Changes:** No need to modify your React/Vite app source code.
 
-## Expanding the ESLint configuration
+## Usage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install the plugin** (see local linking or npm instructions).
+2. **Add to your `vite.config.js`:**
+   ```js
+   import bunSingle from 'vite-plugin-bun-single';
+   // ...
+   plugins: [
+     bunSingle({ generateServer: true })
+   ]
+   ```
+3. **Add a build script to `package.json`:**
+   ```json
+   "scripts": {
+     "build": "bun run build:vite && bun run build:server"
+   }
+   ```
+4. **Run `bun run build`**
+
+This will generate a Bun server and assets, then compile them into a single executable (default: `out/www`).
+
+## Status
+
+This project is a **POC** and not production-ready. Use for experimentation and feedback only.

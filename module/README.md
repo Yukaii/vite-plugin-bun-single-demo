@@ -83,7 +83,7 @@ await buildServer({
 |--------|------|---------|-------------|
 | outDir | string | 'out' | Directory containing server file and where executable will be created |
 | serverFileName | string | 'server.ts' | Name of the server TypeScript file |
-| executableName | string | 'site' | Name of the output executable |
+| executableName | string | 'www' | Name of the output executable |
 
 ## License
 
