@@ -1,0 +1,44 @@
+{
+  "name": "vite-plugin-bun-single",
+  "version": "0.1.0", 
+  "description": "Vite plugin for bundling web applications into a single Bun executable",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "build-server": "./dist/build-server.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "bun",
+    "single-file",
+    "executable"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "bun": ">=1.0.0",
+    "vite": ">=4.0.0"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "file-type": "^20.5.0",
+    "mime": "^4.0.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.11",
+    "@types/mime": "^4.0.0",
+    "@types/node": "^22.15.3",
+    "typescript": "^5.0.0"
+  }
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build:vite": "vite build",
-    "build:server": "bun run build-server.ts",
+    "build:server": "bun run build-server",
     "build": "bun run build:vite && bun run build:server",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -14,7 +14,8 @@
   "dependencies": {
     "@types/mime": "^4.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite-plugin-bun-single": "link:vite-plugin-bun-single"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
