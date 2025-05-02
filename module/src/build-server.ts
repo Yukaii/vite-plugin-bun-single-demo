@@ -1,16 +1,36 @@
-// build-server.ts
-// Using Bun.spawn for reliable --compile --outfile behavior
-import { spawn } from 'bun'; // Use Bun's spawn
+#!/usr/bin/env bun
+import { spawn } from 'bun';
 import { resolve, join } from 'path';
 
-// Configuration with defaults that can be overridden
-interface BuildServerConfig {
+/**
+ * Configuration options for building the server executable
+ */
+export interface BuildServerConfig {
+  /**
+   * Directory containing the server.ts file and where the executable will be created
+   * @default 'out'
+   */
   outDir?: string;
+
+  /**
+   * Name of the server TypeScript file to compile
+   * @default 'server.ts'
+   */
   serverFileName?: string;
+
+  /**
+   * Name of the output executable file
+   * @default 'site'
+   */
   executableName?: string;
 }
 
-export default async function buildServer(config: BuildServerConfig = {}) {
+/**
+ * Build a Bun executable from a TypeScript server file
+ * @param config Configuration options
+ * @returns Promise with the build result
+ */
+export async function buildServer(config: BuildServerConfig = {}) {
   const outDir = config.outDir || 'out';
   const serverFileName = config.serverFileName || 'server.ts';
   const executableName = config.executableName || 'site';
@@ -23,8 +43,8 @@ export default async function buildServer(config: BuildServerConfig = {}) {
   const buildProcess = spawn(
     ['bun', 'build', serverInputPath, '--compile', '--outfile', serverOutputPath],
     {
-      stdio: ["inherit", "inherit", "inherit"], // Pipe stdin, stdout, stderr
-      cwd: process.cwd(),
+      stdio: ["inherit", "inherit", "inherit"],
+      cwd: outDir,
     }
   );
 

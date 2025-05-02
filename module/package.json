@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-bun-single",
-  "version": "0.1.0", 
+  "version": "0.1.0",
   "description": "Vite plugin for bundling web applications into a single Bun executable",
   "type": "module",
   "main": "dist/index.js",
