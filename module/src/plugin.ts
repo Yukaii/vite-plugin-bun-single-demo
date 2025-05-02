@@ -1,7 +1,7 @@
 import { Plugin } from 'vite'
 import fg from 'fast-glob'
-import { writeFileSync, existsSync, mkdirSync } from 'fs'
-import { resolve, relative, dirname } from 'path'
+import { writeFileSync, existsSync, mkdirSync } from 'node:fs'
+import { resolve, relative, dirname } from 'node:path'
 
 export interface BunSingleOptions {
   /**
@@ -9,25 +9,25 @@ export interface BunSingleOptions {
    * @default 'dist'
    */
   distDir?: string
-  
+
   /**
    * The directory where assets.ts and server.ts will be generated
    * @default 'out'
    */
   outDir?: string
-  
+
   /**
    * The name of the generated assets file
    * @default 'assets.generated.ts'
    */
   assetsFile?: string
-  
+
   /**
    * Whether to generate a server.ts file
    * @default false
    */
   generateServer?: boolean
-  
+
   /**
    * The name of the generated server file
    * @default 'server.ts'
@@ -125,7 +125,7 @@ Bun.serve({
 })
 `;
         writeFileSync(serverFile, srv)
-        console.log('[bun-single] scaffolded ' + serverFile)
+        console.log(`[bun-single] scaffolded ${serverFile}`)
       }
     }
   }
