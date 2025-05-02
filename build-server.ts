@@ -4,7 +4,7 @@ import { spawn } from 'bun'; // Use Bun's spawn
 import { resolve } from 'path';
 
 const serverInputPath = resolve('out/server.ts');
-const serverOutputPath = resolve('site'); // Output executable named 'site' in the root
+const serverOutputPath = resolve('out/site'); // Output executable named 'site' in the 'out' folder
 
 console.log(`Building server executable from ${serverInputPath} to ${serverOutputPath}...`);
 

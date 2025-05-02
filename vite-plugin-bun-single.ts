@@ -56,7 +56,7 @@ await loadAssets()
       console.log('[bun-single] wrote ' + assetsFile)
 
       // 3) scaffold server.ts if wanted
-      if (opts.generateServer && !existsSync(serverFile)) {
+      if (opts.generateServer) {
         // Adjust relative path calculation based on the new serverFile location
         const relAssetsPath = relative(dirname(serverFile), assetsFile).replace(/\\/g, '/'); // Corrected path separator replacement
         const srv =
@@ -64,8 +64,14 @@ await loadAssets()
 import { fileTypeFromBuffer } from 'file-type';
 import mime from "mime";
 
+const hostname = process.env.HOST || "0.0.0.0";
+const port = Number(process.env.PORT) || 3000;
+
+console.log(\`Listening on http://\${hostname}:\${port}\`);
+
 Bun.serve({
-  port: Number(process.env.PORT) || 3000,
+  hostname: hostname,
+  port: port,
   async fetch(req) {
     let path = new URL(req.url).pathname
     if (path === "/") path = "/index.html"
